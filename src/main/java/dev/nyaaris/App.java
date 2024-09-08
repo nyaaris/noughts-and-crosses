@@ -1,4 +1,4 @@
-package edu.nyaaris;
+package dev.nyaaris;
 
 /**
  * Hello world!

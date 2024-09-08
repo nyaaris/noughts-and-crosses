@@ -1,4 +1,4 @@
-package edu.nyaaris;
+package dev.nyaaris;
 
 import java.util.Optional;
 

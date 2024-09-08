@@ -1,4 +1,4 @@
-package edu.nyaaris;
+package dev.nyaaris;
 
 public class BoardView {
     
