@@ -18,9 +18,9 @@ public class BoardTest {
     @Test
     public void checkOngoingGameStates() {
         Board board = new Board(4);
-        Assert.assertEquals(Board.GameState.ONGOING, board.getGameState());
+        Assert.assertEquals(Board.GameState.NOUGHTS_MOVE, board.getGameState());
         board.move(0, 0);
-        Assert.assertEquals(Board.GameState.ONGOING, board.getGameState());
+        Assert.assertEquals(Board.GameState.CROSS_MOVE, board.getGameState());
     }
 
     @Test

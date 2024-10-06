@@ -11,7 +11,7 @@ public class Board {
     }
 
     public enum GameState {
-        ONGOING, DRAW, NOUGHT_WON, CROSS_WON
+        NOUGHTS_MOVE, CROSS_MOVE, DRAW, NOUGHT_WON, CROSS_WON
     }
 
     public static class Field {
@@ -75,7 +75,7 @@ public class Board {
         if (getMovesDone() == fields.length * fields.length) {
             return GameState.DRAW;
         }
-        return GameState.ONGOING;
+        return whoMovesNext() == Player.NOUGHT ? GameState.NOUGHTS_MOVE : GameState.CROSS_MOVE;
     }
 
     public Player whoMovesNext() {
