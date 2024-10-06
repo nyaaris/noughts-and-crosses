@@ -23,7 +23,8 @@ public class Board {
 
         @Override
         public boolean equals(Object obj) {
-            if (obj instanceof Field) return filledBy.equals(((Field) obj).filledBy);
+            if (obj instanceof Field)
+                return filledBy.equals(((Field) obj).filledBy);
             return false;
         }
 
@@ -42,6 +43,18 @@ public class Board {
             Arrays.setAll(fields2, (i) -> new Field());
         }
         winConditionRows = getWinConditionRows();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Board)
+            return Arrays.deepEquals(fields, ((Board) obj).fields);
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.deepHashCode(fields);
     }
 
     public Field[][] getBoardState() {
@@ -113,16 +126,16 @@ public class Board {
     }
 
     private Optional<Player> checkRowWins(final Field[] row) {
-        Optional<Player> pretender = row[0].filledBy;
-        if (pretender.isPresent()) {
+        Optional<Player> result = row[0].filledBy;
+        if (result.isPresent()) {
             for (int i = 1; i < row.length; i++) {
-                if (row[i].filledBy != pretender) {
-                    continue;
+                if (!row[i].filledBy.equals(result)) {
+                    result = Optional.empty();
+                    break;
                 }
-                return pretender;
             }
         }
-        return Optional.empty();
+        return result;
     }
 
 }
